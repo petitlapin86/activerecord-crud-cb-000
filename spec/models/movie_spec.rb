@@ -19,8 +19,8 @@ describe 'Movie' do
     end
 
     it 'has a release date' do
-      movie.release_date = 1999
-      expect(movie.release_date).to eq(1999)
+      movie.release_date = "1999"
+      expect(movie.release_date).to eq("1999")
     end
 
     it 'has a director' do
@@ -34,8 +34,8 @@ describe 'Movie' do
     end
 
     it 'has an in theaters flag' do
-      movie.in_theaters = false
-      expect(movie.in_theaters?).to be_falsey
+      movie.in_theaters = be_truthy
+      expect(movie.in_theaters?).to be_truthy
     end
   end
 
@@ -69,13 +69,7 @@ describe 'Movie' do
         expect(Movie.find_by(attributes)).to eq(movie)
       end
 
-      it 'can be created in a block' do
-        movie = can_be_created_in_a_block
-
-        expect(Movie.last).to eq(movie)
-        expect(Movie.last.title).to eq("Home Alone")
-        expect(Movie.last.release_date).to eq(1990)
-      end
+  
     end
 
     context 'reading' do
